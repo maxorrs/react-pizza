@@ -9,3 +9,5 @@
 - Reselect
 - Immer
 - SCSS
+
+Design by [Archakov Blog](https://archakov.im/)
