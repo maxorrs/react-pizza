@@ -1,40 +1,39 @@
 import {SORT_TYPE_DEFAULT, PIZZA_TYPE_DEFAULT} from '../../../consts';
 
-
 const initialState = {
   isSortMenuOpen: false,
   activeSortType: SORT_TYPE_DEFAULT,
   activePizzaType: PIZZA_TYPE_DEFAULT,
-  cart: []
+  cart: [],
 };
 
 export const AppStateActionType = {
-  TOGGLE_SORT_MENU: `TOGGLE_SORT_MENU`,
-  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
-  CHANGE_PIZZA_TYPE: `CHANGE_PIZZA_TYPE`,
-  RESET_SORT_MENU: `RESET_SORT_MENU`,
-  ADD_TO_CART: `ADD_TO_CART`
-}
+  TOGGLE_SORT_MENU: 'TOGGLE_SORT_MENU',
+  CHANGE_SORT_TYPE: 'CHANGE_SORT_TYPE',
+  CHANGE_PIZZA_TYPE: 'CHANGE_PIZZA_TYPE',
+  RESET_SORT_MENU: 'RESET_SORT_MENU',
+  ADD_TO_CART: 'ADD_TO_CART',
+};
 
 export const AppStateActionCreator = {
   toggledSortMenu: () => ({
-    type: AppStateActionType.TOGGLE_SORT_MENU
+    type: AppStateActionType.TOGGLE_SORT_MENU,
   }),
   changeSortType: (payload) => ({
     type: AppStateActionType.CHANGE_SORT_TYPE,
-    payload
+    payload,
   }),
   changePizzaType: (payload) => ({
     type: AppStateActionType.CHANGE_PIZZA_TYPE,
-    payload
+    payload,
   }),
   resetSortMenu: () => ({
-    type: AppStateActionType.RESET_SORT_MENU
+    type: AppStateActionType.RESET_SORT_MENU,
   }),
   addToCard: (payload) => ({
     type: AppStateActionType.ADD_TO_CART,
-    payload
-  })
+    payload,
+  }),
 };
 
 export const appState = (state = initialState, action) => {
@@ -52,7 +51,7 @@ export const appState = (state = initialState, action) => {
       return {...state, activeSortType: SORT_TYPE_DEFAULT, isSortMenuOpen: false};
 
     case AppStateActionType.ADD_TO_CART:
-      return {...state, cart: [...state.cart, action.payload]}
+      return {...state, cart: [...state.cart, action.payload]};
 
     default:
       return state;

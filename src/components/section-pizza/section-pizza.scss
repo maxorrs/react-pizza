@@ -97,15 +97,17 @@
   z-index: 9999;
 }
 
-.section-pizza__option {
-  padding: 15px;
-
-  cursor: pointer;
-}
-
-.section-pizza__option.section-pizza__option--active,
-.section-pizza__option:hover {
+.section-pizza__option.section-pizza__option--active .section-pizza__link,
+.section-pizza__option .section-pizza__link:hover,
+.section-pizza__option .section-pizza__link:focus {
   color: $orange;
   background-color: rgba(254, 95, 30, 0.05);
   font-weight: 700;
+}
+
+.section-pizza__link {
+  display: block;
+  padding: 15px;
+  width: 100%;
+  color: inherit;
 }

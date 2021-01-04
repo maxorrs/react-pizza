@@ -1,5 +1,5 @@
 export const getDoughTypes = (pizza) => {
-  const doughTypes = pizza.options.map((option) => option.dough)
+  const doughTypes = pizza.options.map((option) => option.dough);
   return doughTypes;
 };
 

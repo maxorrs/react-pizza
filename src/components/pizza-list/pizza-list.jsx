@@ -1,14 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import PizzaCard from '../pizza-card/pizza-card';
 
 import pizzas from '../../mocks/pizzas';
 
 import './pizza-list.scss';
-import { getActivePizzaTypeSelector } from '../../store/reducers/app-state/selectors';
+import {getActivePizzaTypeSelector} from '../../store/reducers/app-state/selectors';
 
-const PizzaList = ({ activePizzaType }) => {
+const PizzaList = ({activePizzaType}) => {
   return (
     <section className="pizza-list">
       <h2 className="pizza-list__title">{activePizzaType} пиццы</h2>
@@ -23,6 +24,10 @@ const PizzaList = ({ activePizzaType }) => {
       </ul>
     </section>
   );
+};
+
+PizzaList.propTypes = {
+  activePizzaType: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

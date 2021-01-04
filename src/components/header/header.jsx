@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import logo from '../../assets/img/pizza-logo.svg';
 import {
@@ -10,7 +11,7 @@ import {
 
 import './header.scss';
 
-const Header = ({ sumQuantityInCart, sumPriceInCart }) => {
+const Header = ({sumQuantityInCart, sumPriceInCart}) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -30,10 +31,14 @@ const Header = ({ sumQuantityInCart, sumPriceInCart }) => {
   );
 };
 
+Header.propTypes = {
+  sumPriceInCart: PropTypes.number.isRequired,
+  sumQuantityInCart: PropTypes.number.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   sumQuantityInCart: getSumQuantityInCartSelector(state),
   sumPriceInCart: getSumPriceInCartSelector(state),
 });
 
-export { Header };
 export default connect(mapStateToProps)(Header);

@@ -1,0 +1,5 @@
+webpack.config.js
+jest.config.js
+/.git
+/.vscode
+node_modules

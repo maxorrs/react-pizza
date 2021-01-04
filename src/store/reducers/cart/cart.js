@@ -1,23 +1,23 @@
 import produce from 'immer';
 
 const initialState = {
-  cart: []
+  cart: [],
 };
 
 export const CartActionType = {
-  ADD_TO_CART: `ADD_TO_CART`,
-  CHANGE_QUANTITY: `CHANGE_QUANTITY`
-}
+  ADD_TO_CART: 'ADD_TO_CART',
+  CHANGE_QUANTITY: 'CHANGE_QUANTITY',
+};
 
 export const CartActionCreator = {
   addToCart: (payload) => ({
     type: CartActionType.ADD_TO_CART,
-    payload
+    payload,
   }),
   changeQuantityToCart: (payload) => ({
     type: CartActionType.CHANGE_QUANTITY,
-    payload
-  })
+    payload,
+  }),
 };
 
 export const cartReducer = (state = initialState, action) => {
@@ -32,12 +32,11 @@ export const cartReducer = (state = initialState, action) => {
       draft.cart.map((item) => {
         if (item.id === pizza.id) {
           item.quantity += 1;
+          return item;
         }
-      })
-    }
-  
 
-  })
-  
-  
+        return item;
+      });
+    }
+  });
 };

@@ -18,7 +18,8 @@ const Footer = () => {
             className="footer__link"
             href="https://github.com/maxorrs"
             target="_blank"
-            rel="noreferrer">
+            rel="noreferrer"
+          >
             Max Strokov
           </a>
         </p>
