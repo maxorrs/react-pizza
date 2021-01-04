@@ -1,29 +1,32 @@
-import React, { useState, memo } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { CartActionCreator } from '../../store/reducers/cart/cart';
+import React, {useState, memo} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
 
-import { getDoughTypes, getDefaultPizzaSize } from '../../utils/pizza';
+import {CartActionCreator} from '../../store/reducers/cart/cart';
+import {cartPropTypes, pizzaPropTypes} from '../../utils/prop-types';
+
+import {getDoughTypes, getDefaultPizzaSize} from '../../utils/pizza';
 
 import './pizza-card.scss';
+import IconPlus from '../icons/icon-plus';
 
-const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
-  console.log(cart);
-  const { typeId, title, type, image, options } = pizza;
+const PizzaCard = ({pizza, onAddToCart, cart, onChangeQuantityToCart}) => {
+  const {typeId, title, type, image, options} = pizza;
   const doughTypes = getDoughTypes(pizza);
   const [activeDough, setActiveDough] = useState(doughTypes[0]);
 
-  const { conditions } = options.find((option) => option.dough === activeDough);
+  const {conditions} = options.find((option) => option.dough === activeDough);
   const defaultSize = getDefaultPizzaSize(conditions);
   const [activeSize, setActiveSize] = useState(defaultSize);
-  const { price, id } = conditions.find((condition) => condition.size === activeSize);
+  const {price, id} = conditions.find((condition) => condition.size === activeSize);
 
   const [quantity, setQuantity] = useState(0);
 
   const formSubmitHandler = (evt) => {
     evt.preventDefault();
 
-    const pizza = {
+    const newPizza = {
       id,
       typeId,
       type,
@@ -36,9 +39,9 @@ const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
     const index = cart.findIndex((item) => item.id === id);
 
     if (index === -1) {
-      onAddToCart(pizza);
+      onAddToCart(newPizza);
     } else {
-      onChangeQuantityToCart(pizza);
+      onChangeQuantityToCart(newPizza);
     }
 
     setQuantity((prev) => prev + 1);
@@ -61,21 +64,21 @@ const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
           <fieldset className="pizza-card__field">
             <legend className="visually-hidden">Вид теста</legend>
 
-            {options.map(({ dough, id }, index) => {
-              const isDefaultChecked = index === 0 ? true : false;
+            {options.map(({dough, id: idDough}, index) => {
+              const isDefaultChecked = index === 0;
 
               return (
-                <p key={`${dough}-${id}`} className="pizza-card__input-wrapper">
+                <p key={`${dough}-${idDough}`} className="pizza-card__input-wrapper">
                   <input
                     onChange={() => changeDoughHandler(dough)}
                     className="pizza-card__input visually-hidden"
                     type="radio"
-                    id={id}
+                    id={idDough}
                     name="dough"
-                    value={id}
+                    value={idDough}
                     defaultChecked={isDefaultChecked}
                   />
-                  <label className="pizza-card__label" htmlFor={id}>
+                  <label className="pizza-card__label" htmlFor={idDough}>
                     {dough}
                   </label>
                 </p>
@@ -84,8 +87,8 @@ const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
           </fieldset>
           <fieldset className="pizza-card__field">
             <legend className="visually-hidden">Размер пиццы</legend>
-            {conditions.map(({ size }, index) => {
-              const isDefaultChecked = index === 0 ? true : false;
+            {conditions.map(({size}, index) => {
+              const isDefaultChecked = index === 0;
 
               return (
                 <p key={`${typeId}-${activeDough}-${size}`} className="pizza-card__input-wrapper">
@@ -112,10 +115,7 @@ const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
         <div className="pizza-card__bottom">
           <p className="pizza-card__price">от {price} Р</p>
           <button className="pizza-card__button" type="submit">
-            <svg className="pizza-card__plus" width="10" height="10" viewBox="0 0 10 10">
-              <path d="M5.92001 3.84V5.76V8.64C5.92001 9.17016 5.49017 9.6 4.96001 9.6C4.42985 9.6 4.00001 9.17016 4.00001 8.64L4 5.76L4.00001 3.84V0.96C4.00001 0.42984 4.42985 0 4.96001 0C5.49017 0 5.92001 0.42984 5.92001 0.96V3.84Z" />
-              <path d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z" />
-            </svg>
+            <IconPlus width={10} height={10} className="pizza-card__plus" />
             Добавить
             <span className="pizza-card__quantity">{quantity}</span>
           </button>
@@ -123,6 +123,13 @@ const PizzaCard = ({ pizza, onAddToCart, cart, onChangeQuantityToCart }) => {
       </form>
     </article>
   );
+};
+
+PizzaCard.propTypes = {
+  cart: cartPropTypes,
+  pizza: pizzaPropTypes,
+  onAddToCart: PropTypes.func.isRequired,
+  onChangeQuantityToCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

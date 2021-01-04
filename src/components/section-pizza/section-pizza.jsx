@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import classNames from 'classnames';
 
-import { AppStateActionCreator } from '../../store/reducers/app-state/app-state';
+import {AppStateActionCreator} from '../../store/reducers/app-state/app-state';
 import {
   getSortTypeSelector,
   getActiveSortTypeSelector,
@@ -24,12 +26,12 @@ const SectionPizza = ({
   onChangePizzaType,
   activePizzaType,
 }) => {
-  const sortMenuStatusClassNames = classNames(`section-pizza__options`, {
+  const sortMenuStatusClassNames = classNames('section-pizza__options', {
     'section-pizza__options--opened': isSortMenuOpen,
   });
 
   const toggledSortMenuEnterHandler = (evt) => {
-    if ((evt.code = `Enter`)) {
+    if (evt.code === 'Enter') {
       onToggledSortMenu();
     }
   };
@@ -49,13 +51,12 @@ const SectionPizza = ({
         <nav className="section-pizza__nav">
           <ul className="section-pizza__nav-list">
             {pizzaTypes.map((type) => {
-              const classes = classNames(`section-pizza__nav-item`, {
+              const classes = classNames('section-pizza__nav-item', {
                 'section-pizza__nav-item--active': type === activePizzaType,
               });
-              console.log(activePizzaType);
               return (
-                <li key={type} className={classes} onClick={changePizzaTypeHandler}>
-                  <Link className="section-pizza__nav-link" to="#">
+                <li key={type} className={classes}>
+                  <Link className="section-pizza__nav-link" to="/" onClick={changePizzaTypeHandler}>
                     {type}
                   </Link>
                 </li>
@@ -69,7 +70,9 @@ const SectionPizza = ({
             onClick={onToggledSortMenu}
             onKeyDown={toggledSortMenuEnterHandler}
             className="section-pizza__sorting-type"
-            tabIndex="0">
+            tabIndex="0"
+            role="button"
+          >
             {activeSortType}
           </span>
           <ul className={sortMenuStatusClassNames}>
@@ -77,12 +80,18 @@ const SectionPizza = ({
               return (
                 <li
                   key={type}
-                  className={classNames(`section-pizza__option`, {
+                  className={classNames('section-pizza__option', {
                     'section-pizza__option--active': activeSortType === type,
                   })}
-                  onClick={() => onChageSortType(type)}
-                  tabIndex="1">
-                  {type}
+                  tabIndex="-1"
+                >
+                  <Link
+                    className="section-pizza__link"
+                    to="/"
+                    onClick={() => onChageSortType(type)}
+                  >
+                    {type}
+                  </Link>
                 </li>
               );
             })}
@@ -91,6 +100,16 @@ const SectionPizza = ({
       </div>
     </section>
   );
+};
+
+SectionPizza.propTypes = {
+  isSortMenuOpen: PropTypes.bool.isRequired,
+  onToggledSortMenu: PropTypes.func.isRequired,
+  sortType: PropTypes.object.isRequired,
+  activeSortType: PropTypes.string,
+  onChageSortType: PropTypes.func.isRequired,
+  onChangePizzaType: PropTypes.func.isRequired,
+  activePizzaType: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -114,5 +133,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export { SectionPizza };
 export default connect(mapStateToProps, mapDispatchToProps)(SectionPizza);

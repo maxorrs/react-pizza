@@ -1,17 +1,16 @@
 const initialState = {
-  pizzas: []
+  pizzas: [],
 };
 
 export const DataActionType = {
-  LOAD_PIZZAS: `LOAD_PIZZAS`,
-}
+  LOAD_PIZZAS: 'LOAD_PIZZAS',
+};
 
 export const DataActionCreator = {
   loadPizzas: (payload) => ({
     type: DataActionType.LOAD_PIZZAS,
-    payload
+    payload,
   }),
-  
 };
 
 export const data = (state = initialState, action) => {
