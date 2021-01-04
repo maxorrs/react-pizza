@@ -1,0 +1,40 @@
+@import '../../scss/variables.scss';
+
+.footer {
+  margin: 0 auto;
+  padding: 10px 60px;
+
+  width: 80%;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+}
+
+.footer__copyright {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__label {
+  margin: 0;
+  margin-right: 15px;
+  color: $gray-darkness;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.footer__link {
+  color: inherit;
+  text-decoration: underline;
+
+  &:visited {
+    color: lighten($gray-darkness, 20%);
+  }
+
+  &:hover,
+  &:focus {
+    color: darken($gray-darkness, $amount: 40%);
+  }
+}

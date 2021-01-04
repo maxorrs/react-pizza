@@ -1,0 +1,28 @@
+.pizza-list {
+  padding: 40px 60px 0px;
+  margin: 0 auto;
+  // width: 1390px;
+  width: 80%;
+  background-color: white;
+}
+
+.pizza-list__title {
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.pizza-list__list {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+}
+
+.pizza-list__item {
+  width: 280px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
