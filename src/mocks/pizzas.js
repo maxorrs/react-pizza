@@ -1,55 +1,138 @@
+import {nanoid} from 'nanoid';
+
 const pizzas = [
   {
-    typeId: 1,
+    typeId: nanoid(),
     type: 'Мясная',
+    isHot: false,
+    isVegan: false,
+    isNew: false,
     title: 'Чизбургер-пицца',
+    structure:
+      'Ананасы, брусника, молоко сгущенное Ананасы, брусника, молоко сгущенное Ананасы, брусн',
     image:
-      'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/85f46c84-f5de-4d16-ad94-b65501b04ff5.jpg',
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/8a813e3b734e457c848a60fc70a100d5_584x584.jpeg',
     options: [
       {
         dough: 'Традиционное',
-        id: 44324,
+        isAvailableDough: false,
+        id: nanoid(),
         conditions: [
-          {id: 123, size: 26, price: 300},
-          {id: 124, size: 30, price: 400},
-          {id: 125, size: 40, price: 500},
+          {id: nanoid(), size: 26, price: 300, isAvailable: false},
+          {id: nanoid(), size: 30, price: 400, isAvailable: false},
+          {id: nanoid(), size: 40, price: 500, isAvailable: true},
         ],
       },
       {
         dough: 'Тонкое',
-        id: 23523,
+        isAvailableDough: true,
+        id: nanoid(),
         conditions: [
-          {id: 231, size: 26, price: 500},
-          {id: 232, size: 30, price: 600},
-          {id: 233, size: 40, price: 800},
+          {id: nanoid(), size: 26, price: 500, isAvailable: false},
+          {id: nanoid(), size: 30, price: 600, isAvailable: true},
+          {id: nanoid(), size: 40, price: 800, isAvailable: true},
         ],
       },
     ],
   },
 
   {
-    typeId: 2,
+    typeId: nanoid(),
     type: 'Вегетарианская',
+    isHot: false,
+    isVegan: true,
+    isNew: false,
     title: 'Сырная',
+    structure: 'Ананасы, брусника, молоко сгущенное',
     image:
       'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/f8ea1b5e-671d-4460-9e3d-ce720b95a1ce.jpg',
     options: [
       {
         dough: 'Традиционное',
-        id: 214123,
+        isAvailableDough: true,
+        id: nanoid(),
         conditions: [
-          {id: 331, size: 26, price: 200},
-          {id: 332, size: 30, price: 300},
-          {id: 333, size: 40, price: 400},
+          {id: nanoid(), size: 26, price: 200, isAvailable: true},
+          {id: nanoid(), size: 30, price: 300, isAvailable: true},
+          {id: nanoid(), size: 40, price: 400, isAvailable: true},
         ],
       },
       {
         dough: 'Тонкое',
-        id: 89420,
+        isAvailableDough: true,
+        id: nanoid(),
         conditions: [
-          {id: 441, size: 26, price: 550},
-          {id: 442, size: 30, price: 650},
-          {id: 443, size: 40, price: 850},
+          {id: nanoid(), size: 26, price: 550, isAvailable: true},
+          {id: nanoid(), size: 30, price: 650, isAvailable: true},
+          {id: nanoid(), size: 40, price: 850, isAvailable: true},
+          {id: nanoid(), size: 44, price: 990, isAvailable: true},
+        ],
+      },
+      {
+        dough: 'Бортики',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 35, price: 800, isAvailable: true},
+          {id: nanoid(), size: 40, price: 1100, isAvailable: false},
+        ],
+      },
+    ],
+  },
+
+  {
+    typeId: nanoid(),
+    type: 'Мясная',
+    isHot: true,
+    isVegan: false,
+    isNew: false,
+    title: 'Мексиканская',
+    structure: 'Ананасы, брусника, молоко сгущенное',
+    image:
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/a1f7da39-debe-4a2e-bfc9-82d747f5aeec.jpg',
+    options: [
+      {
+        dough: 'Традиционное',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 200, isAvailable: true},
+          {id: nanoid(), size: 30, price: 300, isAvailable: true},
+          {id: nanoid(), size: 40, price: 400, isAvailable: true},
+          {id: nanoid(), size: 44, price: 1050, isAvailable: true},
+        ],
+      },
+      {
+        dough: 'Тонкое',
+        isAvailableDough: false,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 550, isAvailable: true},
+          {id: nanoid(), size: 30, price: 650, isAvailable: true},
+          {id: nanoid(), size: 40, price: 850, isAvailable: true},
+        ],
+      },
+    ],
+  },
+
+  {
+    typeId: nanoid(),
+    type: 'Вегетарианская',
+    isHot: false,
+    isVegan: true,
+    isNew: true,
+    title: 'Пицца-пирог',
+    structure: 'Ананасы, брусника, молоко сгущенное',
+    image:
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/acf387b2-273b-41ab-82c8-d648ae4793cd.jpg',
+    options: [
+      {
+        dough: 'Тонкое',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 350, isAvailable: true},
+          {id: nanoid(), size: 30, price: 550, isAvailable: true},
         ],
       },
     ],

@@ -30,10 +30,6 @@ export const AppStateActionCreator = {
   resetSortMenu: () => ({
     type: AppStateActionType.RESET_SORT_MENU,
   }),
-  addToCard: (payload) => ({
-    type: AppStateActionType.ADD_TO_CART,
-    payload,
-  }),
 };
 
 export const appState = (state = initialState, action) => {
@@ -48,10 +44,7 @@ export const appState = (state = initialState, action) => {
       return {...state, activePizzaType: action.payload};
 
     case AppStateActionType.RESET_SORT_MENU:
-      return {...state, activeSortType: SORT_TYPE_DEFAULT, isSortMenuOpen: false};
-
-    case AppStateActionType.ADD_TO_CART:
-      return {...state, cart: [...state.cart, action.payload]};
+      return {...state, isSortMenuOpen: false};
 
     default:
       return state;
