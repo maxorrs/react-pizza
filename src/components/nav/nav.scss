@@ -1,0 +1,39 @@
+@import '../../scss/variables.scss';
+
+.nav__list {
+  // width: 850px;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.nav__item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: $gray;
+  border-radius: 30px;
+  color: $black;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.nav__item.nav__item--active {
+  background-color: $black;
+  color: white;
+}
+
+.nav__link {
+  display: block;
+  padding: 10px 30px;
+
+  color: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}

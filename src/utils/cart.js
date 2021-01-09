@@ -14,7 +14,3 @@ export const getSumPriceInCart = (cart) => {
   const price = 0;
   return price;
 };
-
-export const updateCart = (cart, newItem) => {
-  const index = cart.findIndex((cartItem) => cartItem.id === newItem.id);
-};
