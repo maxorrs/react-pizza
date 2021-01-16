@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {SortType} from '../consts';
 
 export const cartPropTypes = PropTypes.arrayOf(
   PropTypes.shape({
@@ -35,3 +36,5 @@ export const pizzaPropTypes = PropTypes.shape({
     }),
   ),
 });
+
+export const sortTypesPropTypes = PropTypes.oneOf([...Object.values(SortType)]).isRequired;

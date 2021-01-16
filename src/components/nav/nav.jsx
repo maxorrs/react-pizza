@@ -6,12 +6,11 @@ import classNames from 'classnames';
 
 import {AppStateActionCreator} from '../../store/reducers/app-state/app-state';
 import {getActivePizzaTypeSelector} from '../../store/reducers/app-state/selectors';
+import {getTypesFilterSelector} from '../../store/reducers/data/selectors';
 
 import './nav.scss';
 
-const pizzaTypes = ['Все', 'Мясные', 'Вегетарианские'];
-
-const Nav = ({onChangePizzaType, activePizzaType}) => {
+const Nav = ({onChangePizzaType, activePizzaType, typesFilter}) => {
   const changePizzaTypeHandler = (evt) => {
     if (evt.target.innerText === activePizzaType) {
       return;
@@ -23,10 +22,11 @@ const Nav = ({onChangePizzaType, activePizzaType}) => {
   return (
     <nav className="section-pizza__nav nav">
       <ul className="nav__list">
-        {pizzaTypes.map((type) => {
+        {typesFilter.map((type) => {
           const classes = classNames('nav__item', {
             'nav__item--active': type === activePizzaType,
           });
+
           return (
             <li key={type} className={classes}>
               <Link className="nav__link" to="/" onClick={changePizzaTypeHandler}>
@@ -43,10 +43,12 @@ const Nav = ({onChangePizzaType, activePizzaType}) => {
 Nav.propTypes = {
   onChangePizzaType: PropTypes.func.isRequired,
   activePizzaType: PropTypes.string.isRequired,
+  typesFilter: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activePizzaType: getActivePizzaTypeSelector(state),
+  typesFilter: getTypesFilterSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

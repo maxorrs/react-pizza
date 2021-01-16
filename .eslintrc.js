@@ -55,5 +55,14 @@ module.exports = {
 
     'prettier/prettier': ['error'],
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
+    'operator-linebreak': [
+      'error',
+      'after',
+      {
+        overrides: {
+          ':': 'before',
+        },
+      },
+    ],
   },
 };

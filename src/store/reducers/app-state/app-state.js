@@ -13,6 +13,7 @@ export const AppStateActionType = {
   CHANGE_PIZZA_TYPE: 'CHANGE_PIZZA_TYPE',
   RESET_SORT_MENU: 'RESET_SORT_MENU',
   ADD_TO_CART: 'ADD_TO_CART',
+  RESET_FILTERS: 'RESET_FILTERS',
 };
 
 export const AppStateActionCreator = {
@@ -30,6 +31,9 @@ export const AppStateActionCreator = {
   resetSortMenu: () => ({
     type: AppStateActionType.RESET_SORT_MENU,
   }),
+  resetFilters: () => ({
+    type: AppStateActionType.RESET_FILTERS,
+  }),
 };
 
 export const appState = (state = initialState, action) => {
@@ -45,6 +49,14 @@ export const appState = (state = initialState, action) => {
 
     case AppStateActionType.RESET_SORT_MENU:
       return {...state, isSortMenuOpen: false};
+
+    case AppStateActionType.RESET_FILTERS:
+      return {
+        ...state,
+        isSortMenuOpen: false,
+        activePizzaType: PIZZA_TYPE_DEFAULT,
+        activeSortType: SORT_TYPE_DEFAULT,
+      };
 
     default:
       return state;

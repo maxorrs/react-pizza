@@ -31,12 +31,13 @@
   position: absolute;
   top: 30px;
   right: 0;
-  z-index: 9999;
   padding: 10px 0;
   margin: 0;
   list-style: none;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   border-radius: 10px;
+
+  z-index: 2;
 }
 
 .sorting__option.sorting__option--active .sorting__link,
