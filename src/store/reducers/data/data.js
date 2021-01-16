@@ -1,5 +1,7 @@
+import pizzas from '../../../mocks/pizzas';
+
 const initialState = {
-  pizzas: [],
+  pizzas,
 };
 
 export const DataActionType = {

@@ -3,13 +3,13 @@ import {nanoid} from 'nanoid';
 const pizzas = [
   {
     typeId: nanoid(),
-    type: 'Мясная',
+    type: 'Мясные',
     isHot: false,
     isVegan: false,
     isNew: false,
     title: 'Чизбургер-пицца',
     structure:
-      'Ананасы, брусника, молоко сгущенное Ананасы, брусника, молоко сгущенное Ананасы, брусн',
+      'Мясной соус болоньезе, моцарелла, красный лук, соленые огурчики, томаты, соус бургер',
     image:
       'https://dodopizza-a.akamaihd.net/static/Img/Products/8a813e3b734e457c848a60fc70a100d5_584x584.jpeg',
     options: [
@@ -38,12 +38,12 @@ const pizzas = [
 
   {
     typeId: nanoid(),
-    type: 'Вегетарианская',
+    type: 'Вегетарианские',
     isHot: false,
     isVegan: true,
     isNew: false,
     title: 'Сырная',
-    structure: 'Ананасы, брусника, молоко сгущенное',
+    structure: 'Увеличенная порция моцареллы, томатный соус',
     image:
       'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/f8ea1b5e-671d-4460-9e3d-ce720b95a1ce.jpg',
     options: [
@@ -82,12 +82,13 @@ const pizzas = [
 
   {
     typeId: nanoid(),
-    type: 'Мясная',
+    type: 'Мясные',
     isHot: true,
     isVegan: false,
     isNew: false,
     title: 'Мексиканская',
-    structure: 'Ананасы, брусника, молоко сгущенное',
+    structure: `Острый цыпленок, томатный соус, сладкий перец, красный лук, 
+    моцарелла, острый перец халапеньо, томаты, соус сальса`,
     image:
       'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/a1f7da39-debe-4a2e-bfc9-82d747f5aeec.jpg',
     options: [
@@ -117,7 +118,7 @@ const pizzas = [
 
   {
     typeId: nanoid(),
-    type: 'Вегетарианская',
+    type: 'Вегетарианские',
     isHot: false,
     isVegan: true,
     isNew: true,

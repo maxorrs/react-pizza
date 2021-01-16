@@ -11,6 +11,9 @@ export const getSumPriceInCart = (cart) => {
   if (!cart) {
     return 0;
   }
-  const price = 0;
+
+  const price = cart.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
   return price;
 };

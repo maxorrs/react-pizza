@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
 
 import logo from '../../assets/img/pizza-logo.svg';
 import {
@@ -41,4 +42,4 @@ const mapStateToProps = (state) => ({
   sumPriceInCart: getSumPriceInCartSelector(state),
 });
 
-export default connect(mapStateToProps)(Header);
+export default compose(connect(mapStateToProps), memo)(Header);
