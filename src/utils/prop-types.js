@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 import {SortType} from '../consts';
 
-export const cartPropTypes = PropTypes.arrayOf(
-  PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    typeId: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    title: PropTypes.string,
-    size: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-  }),
-);
+export const pizzaCartPropTypes = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  typeId: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  title: PropTypes.string,
+  size: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  dough: PropTypes.string.isRequired,
+});
+
+export const cartPropTypes = PropTypes.arrayOf(pizzaCartPropTypes);
 
 export const pizzaPropTypes = PropTypes.shape({
   typeId: PropTypes.string.isRequired,

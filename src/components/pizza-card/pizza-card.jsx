@@ -18,7 +18,7 @@ import {getCartSelector} from '../../store/reducers/cart/selectors';
 
 import './pizza-card.scss';
 
-const PizzaCard = ({pizza, onAddToCart, cart, onChangeQuantityToCart}) => {
+const PizzaCard = ({pizza, onAddToCart, cart, onIncQuantity}) => {
   const {typeId, title, type, image, options, isHot, isVegan, isNew, structure} = pizza;
   const doughTypes = getDoughTypes(pizza);
   const [activeDough, setActiveDough] = useState(doughTypes[0]);
@@ -38,6 +38,8 @@ const PizzaCard = ({pizza, onAddToCart, cart, onChangeQuantityToCart}) => {
     const newPizza = {
       id,
       typeId,
+      dough: activeDough,
+      image,
       type,
       title,
       size: activeSize,
@@ -45,12 +47,12 @@ const PizzaCard = ({pizza, onAddToCart, cart, onChangeQuantityToCart}) => {
       quantity: 1,
     };
 
-    const index = cart.findIndex((item) => item.id === id);
+    const isAvailableInCart = cart.findIndex((item) => item.id === id) === -1;
 
-    if (index === -1) {
+    if (isAvailableInCart) {
       onAddToCart(newPizza);
     } else {
-      onChangeQuantityToCart(newPizza);
+      onIncQuantity(id);
     }
 
     setQuantity((prev) => prev + 1);
@@ -196,7 +198,7 @@ PizzaCard.propTypes = {
   cart: cartPropTypes,
   pizza: pizzaPropTypes,
   onAddToCart: PropTypes.func.isRequired,
-  onChangeQuantityToCart: PropTypes.func.isRequired,
+  onIncQuantity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -207,8 +209,8 @@ const mapDispatchToProps = (dispatch) => ({
   onAddToCart: (pizza) => {
     dispatch(CartActionCreator.addToCart(pizza));
   },
-  onChangeQuantityToCart: (pizza) => {
-    dispatch(CartActionCreator.changeQuantityToCart(pizza));
+  onIncQuantity: (id) => {
+    dispatch(CartActionCreator.incQuantity(id));
   },
 });
 

@@ -10,7 +10,7 @@ import Footer from '../../footer/footer';
 const MainPage = () => {
   return (
     <div className="page page--yellow page--main">
-      <Header />
+      <Header isMainPage />
       <main>
         <SectionPizza />
         <PizzaList />
