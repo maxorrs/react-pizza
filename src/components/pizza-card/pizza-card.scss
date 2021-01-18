@@ -186,7 +186,7 @@
   }
 
   &:active {
-    background-color: darken($color: $orange, $amount: 10%);
+    background-color: darken($orange, 10%);
     transform: translateY(1px);
   }
 }

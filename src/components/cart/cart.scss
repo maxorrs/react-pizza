@@ -1,0 +1,159 @@
+@import '../../scss/variables.scss';
+
+.cart {
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px 60px;
+  min-height: 650px;
+
+  background-color: white;
+}
+
+.cart__wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.cart__header {
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart__title {
+  position: relative;
+  margin: 0;
+  padding-left: 30px;
+  font-size: 32px;
+  line-height: 38px;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    background-image: url('../../assets/img/cart.svg');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+  }
+}
+
+.cart__reset-btn {
+  padding: 0;
+  padding-left: 20px;
+  position: relative;
+  color: $gray-text-lighten;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+
+    position: absolute;
+    left: 3px;
+    top: 0;
+
+    background-image: url('../../assets/img/trash.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+
+    opacity: .8;
+  }
+
+  &:hover {
+    color: darken($gray-text-lighten, 15%)
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.cart__bottom {
+  padding-bottom: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cart__total-quantity {
+  margin: 0;
+  font-size: 22px;
+  line-height: 27px;
+
+  & span {
+    font-weight: 700;
+  }
+}
+
+.cart__total-price {
+  margin: 0;
+  font-size: 22px;
+  line-height: 27px;
+
+  & span {
+    color: $orange;
+    font-weight: 700;
+  }
+}
+
+.cart__actions {
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cart__back-btn {
+  position: relative;
+  padding: 20px 20px 20px 35px;
+  text-align: center;
+  width: 211px;
+  border: 1px solid $gray-border-light;
+  border-radius: 30px;
+  color: $gray-text-lightness;
+  font-size: 16px;
+  line-height: 20px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 16px;
+
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 30px;
+
+    background-image: url('../../assets/img/grey-arrow-left.svg');
+    background-size: 13px 16px;
+    background-repeat: no-repeat;
+  }
+}
+
+.cart__submit {
+  padding: 0;
+  border: none;
+  background-color: $orange;
+  color: white;
+  width: 211px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+
+}

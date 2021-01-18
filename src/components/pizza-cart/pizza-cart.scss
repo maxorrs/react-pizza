@@ -1,0 +1,116 @@
+@import '../../scss/variables.scss';
+
+.pizza-cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pizza-cart__info {
+  width: 375px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pizza-cart__img-wrapper {
+  margin-right: 15px;
+}
+
+.pizza-cart__name {
+  padding-top: 15px;
+}
+
+.pizza-cart__title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.pizza-cart__subtitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.pizza-cart__actions {
+  width: 115px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pizza-cart__action-btn {
+  position: relative;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 2px solid $orange;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pizza-cart__action-btn.pizza-cart__action-btn--dec::after,
+.pizza-cart__action-btn.pizza-cart__action-btn--inc::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 9px;
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: $orange;
+}
+
+.pizza-cart__action-btn.pizza-cart__action-btn--inc::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  display: block;
+  width: 2px;
+  height: 10px;
+  background-color: $orange;
+}
+
+.pizza-cart__quantity {
+  margin: 0;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 700;
+  min-width: 50px;
+  text-align: center;
+}
+
+.pizza-cart__price {
+  margin: 0;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 700;
+}
+
+.pizza-cart__action-btn.pizza-cart__action-btn--delete {
+  position: relative;
+  border-color: $gray-border-darkness;
+}
+
+.pizza-cart__action-btn.pizza-cart__action-btn--delete::after,
+.pizza-cart__action-btn.pizza-cart__action-btn--delete::before {
+  content: '';
+
+  display: block;
+  width: 12px;
+  height: 2px;
+
+  position: absolute;
+  top: 13px;
+  left: 8px;
+  background-color: $gray-border-darkness;
+  transform: rotate(45deg);
+}
+
+.pizza-cart__action-btn.pizza-cart__action-btn--delete::before {
+  transform: rotate(-45deg);
+}
