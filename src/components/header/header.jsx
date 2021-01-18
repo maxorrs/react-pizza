@@ -9,6 +9,7 @@ import {
   getSumQuantityInCartSelector,
   getSumPriceInCartSelector,
 } from '../../store/reducers/cart/selectors';
+import {areEqualByValue} from '../../utils/memo';
 
 import './header.scss';
 
@@ -48,9 +49,5 @@ const mapStateToProps = (state) => ({
   sumQuantityInCart: getSumQuantityInCartSelector(state),
   sumPriceInCart: getSumPriceInCartSelector(state),
 });
-
-const areEqualByValue = (prevProps, nextProps) => {
-  return !(prevProps.isMainPage === nextProps.isMainPage);
-};
 
 export default compose(connect(mapStateToProps), memo)(Header, areEqualByValue);

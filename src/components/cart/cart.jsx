@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {compose} from 'redux';
 
 import CartList from '../cart-list/cart-list';
 
@@ -64,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Cart);

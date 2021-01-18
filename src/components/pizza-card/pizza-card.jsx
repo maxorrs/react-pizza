@@ -7,6 +7,7 @@ import {pizzaPropTypes} from '../../utils/prop-types';
 
 import './pizza-card.scss';
 import withPopupCard from '../hocs/with-popup-card';
+import {areEqualByQuantity} from '../../utils/memo';
 
 const PizzaCard = ({
   pizza,
@@ -24,6 +25,11 @@ const PizzaCard = ({
 }) => {
   const {isNew, isHot, isVegan, options, image, title, typeId, structure} = pizza;
 
+  const formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    onFormSubmit();
+  };
+
   const classNamesCard = classNames('pizza-list__item pizza-card', {
     'pizza-card--new': isNew,
     'pizza-card--popup-active': isShownPopup,
@@ -40,7 +46,7 @@ const PizzaCard = ({
         <img src={image} width="260" height="260" alt={`Пицца ${title}`} />
       </div>
       <h3 className={classNameTitle}>{title}</h3>
-      <form onSubmit={onFormSubmit} className="pizza-card__form" method="#">
+      <form onSubmit={formSubmitHandler} className="pizza-card__form" method="#">
         <div className="pizza-card__controls">
           <fieldset className="pizza-card__field">
             <legend className="visually-hidden">Вид теста</legend>
@@ -148,8 +154,4 @@ PizzaCard.propTypes = {
   quantity: PropTypes.number.isRequired,
 };
 
-const areEqualByQuantity = (prevProps, nextProps) => {
-  return prevProps.quantity !== nextProps.quantity;
-};
-
-export default compose(memo, withPopupCard)(PizzaCard, areEqualByQuantity);
+export default compose(withPopupCard, memo)(PizzaCard, areEqualByQuantity);

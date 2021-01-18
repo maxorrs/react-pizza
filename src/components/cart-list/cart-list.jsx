@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
@@ -6,6 +6,7 @@ import PizzaCart from '../pizza-cart/pizza-cart';
 
 import {getCartSelector} from '../../store/reducers/cart/selectors';
 import {cartPropTypes} from '../../utils/prop-types';
+import {areEqualByLength} from '../../utils/memo';
 
 import './cart-list.scss';
 
@@ -31,10 +32,4 @@ const mapStateToProps = (state) => ({
   cart: getCartSelector(state),
 });
 
-const areEqualByLength = (prevProps, nextProps) => {
-  /*eslint-disable*/
-  console.log(prevProps);
-  return prevProps.cart.length !== nextProps.cart.length;
-};
-
-export default compose(connect(mapStateToProps))(CartList, areEqualByLength);
+export default compose(connect(mapStateToProps), memo)(CartList);

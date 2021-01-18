@@ -15,6 +15,7 @@ import {
   getAvailableMinSizeIndex,
   getAvailableDoughIndex,
 } from '../../utils/pizza';
+import {areEqualByIdAndQuantity} from '../../utils/memo';
 
 const PizzaCardContainer = (props) => {
   const {onAddToCart, onIncQuantity, pizza, cart} = props;
@@ -31,9 +32,7 @@ const PizzaCardContainer = (props) => {
     id: 0,
   };
 
-  const formSubmitHandler = useCallback((evt) => {
-    evt.preventDefault();
-
+  const formSubmitHandler = useCallback(() => {
     const newPizza = {
       id,
       typeId,
@@ -47,14 +46,24 @@ const PizzaCardContainer = (props) => {
     };
 
     const isAvailableInCart = cart.findIndex((item) => item.id === id) === -1;
-
     if (isAvailableInCart) {
       onAddToCart(newPizza);
     } else {
       onIncQuantity(id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    activeDough,
+    activeSize,
+    cart,
+    id,
+    image,
+    onAddToCart,
+    onIncQuantity,
+    price,
+    title,
+    type,
+    typeId,
+  ]);
 
   useEffect(() => {
     setActiveSize(defaultSize);
@@ -104,14 +113,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const areEqualById = (prevProps, nextProps) => {
-  const {typeId} = prevProps.pizza;
-  const isEqualById = nextProps.cart.some((item) => item.typeId === typeId);
-
-  return !isEqualById;
-};
-
 export default compose(connect(mapStateToProps, mapDispatchToProps), memo)(
   PizzaCardContainer,
-  areEqualById,
+  areEqualByIdAndQuantity,
 );

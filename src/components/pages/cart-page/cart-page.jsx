@@ -9,6 +9,7 @@ import Footer from '../../footer/footer';
 
 import {getCartSelector} from '../../../store/reducers/cart/selectors';
 import {cartPropTypes} from '../../../utils/prop-types';
+import {areEqualByLength} from '../../../utils/memo';
 
 import './cart-page.scss';
 
@@ -32,8 +33,4 @@ const mapStateToProps = (state) => ({
   cart: getCartSelector(state),
 });
 
-const areEqualByLength = (prevProps, nextProps) => {
-  return prevProps.cart.length !== nextProps.cart.length;
-};
-
-export default compose(connect(mapStateToProps), memo)(CartPage, areEqualByLength);
+export default compose(connect(mapStateToProps), memo)(CartPage);
