@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import PizzaCard from '../pizza-card/pizza-card';
+import PizzaCardContainer from '../pizza-card/pizza-card-container';
 
 import {pizzaPropTypes} from '../../utils/prop-types';
 
@@ -19,7 +19,7 @@ const PizzaList = ({activePizzaType, filteredPizzas}) => {
         {filteredPizzas.map((pizza) => {
           return (
             <li key={pizza.typeId} className="pizza-list__item">
-              <PizzaCard pizza={pizza} />
+              <PizzaCardContainer pizza={pizza} />
             </li>
           );
         })}

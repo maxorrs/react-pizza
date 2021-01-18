@@ -9,6 +9,7 @@ import {
   getSumQuantityInCartSelector,
   getSumPriceInCartSelector,
 } from '../../store/reducers/cart/selectors';
+import {areEqualByValue} from '../../utils/memo';
 
 import './header.scss';
 
@@ -49,4 +50,4 @@ const mapStateToProps = (state) => ({
   sumPriceInCart: getSumPriceInCartSelector(state),
 });
 
-export default compose(connect(mapStateToProps), memo)(Header);
+export default compose(connect(mapStateToProps), memo)(Header, areEqualByValue);

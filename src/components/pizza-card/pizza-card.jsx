@@ -1,92 +1,34 @@
-import React, {useState, memo, useEffect, useRef} from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
 import classNames from 'classnames';
+import {compose} from 'redux';
 
-import {CartActionCreator} from '../../store/reducers/cart/cart';
-import {cartPropTypes, pizzaPropTypes} from '../../utils/prop-types';
-
-import {
-  getDoughTypes,
-  getDefaultPizzaSize,
-  getAvailableMinSizeIndex,
-  getAvailableDoughIndex,
-} from '../../utils/pizza';
-
-import {getCartSelector} from '../../store/reducers/cart/selectors';
+import {pizzaPropTypes} from '../../utils/prop-types';
 
 import './pizza-card.scss';
+import withPopupCard from '../hocs/with-popup-card';
+import {areEqualByQuantity} from '../../utils/memo';
 
-const PizzaCard = ({pizza, onAddToCart, cart, onIncQuantity}) => {
-  const {typeId, title, type, image, options, isHot, isVegan, isNew, structure} = pizza;
-  const doughTypes = getDoughTypes(pizza);
-  const [activeDough, setActiveDough] = useState(doughTypes[0]);
-
-  const {conditions} = options.find((option) => option.dough === activeDough);
-  const defaultSize = getDefaultPizzaSize(conditions);
-  const [activeSize, setActiveSize] = useState(defaultSize);
-  const {price, id} = conditions.find((condition) => condition.size === activeSize) || {
-    price: 0,
-    id: 0,
-  };
-  const [quantity, setQuantity] = useState(0);
+const PizzaCard = ({
+  pizza,
+  imageRef,
+  isShownPopup,
+  onFormSubmit,
+  onChangeActiveSize,
+  onChangeActiveDough,
+  conditions,
+  availableDoughIndex,
+  availableMinSizeIndex,
+  activeDough,
+  price,
+  quantity,
+}) => {
+  const {isNew, isHot, isVegan, options, image, title, typeId, structure} = pizza;
 
   const formSubmitHandler = (evt) => {
     evt.preventDefault();
-
-    const newPizza = {
-      id,
-      typeId,
-      dough: activeDough,
-      image,
-      type,
-      title,
-      size: activeSize,
-      price,
-      quantity: 1,
-    };
-
-    const isAvailableInCart = cart.findIndex((item) => item.id === id) === -1;
-
-    if (isAvailableInCart) {
-      onAddToCart(newPizza);
-    } else {
-      onIncQuantity(id);
-    }
-
-    setQuantity((prev) => prev + 1);
+    onFormSubmit();
   };
-
-  useEffect(() => {
-    setActiveSize(defaultSize);
-  }, [activeDough, defaultSize]);
-
-  const [isShownPopup, setIsShownPopup] = useState(false);
-
-  const enablePopupHandler = () => {
-    setIsShownPopup(true);
-  };
-
-  const disablePopupHandler = () => {
-    setIsShownPopup(false);
-  };
-
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const {current} = imageRef;
-    current.addEventListener('mouseover', enablePopupHandler);
-    current.addEventListener('mouseout', disablePopupHandler);
-
-    return () => {
-      current.removeEventListener('mouseover', enablePopupHandler);
-      current.removeEventListener('mouseout', disablePopupHandler);
-    };
-  }, []);
-
-  const availableMinSizeIndex = getAvailableMinSizeIndex(conditions);
-  const availableDoughIndex = getAvailableDoughIndex(options);
 
   const classNamesCard = classNames('pizza-list__item pizza-card', {
     'pizza-card--new': isNew,
@@ -115,7 +57,7 @@ const PizzaCard = ({pizza, onAddToCart, cart, onIncQuantity}) => {
               return (
                 <p key={`${dough}-${idDough}`} className="pizza-card__input-wrapper">
                   <input
-                    onChange={() => setActiveDough(dough)}
+                    onChange={() => onChangeActiveDough(dough)}
                     className="pizza-card__input visually-hidden"
                     type="radio"
                     id={idDough}
@@ -140,7 +82,7 @@ const PizzaCard = ({pizza, onAddToCart, cart, onIncQuantity}) => {
                 <p key={`${typeId}-${activeDough}-${size}`} className="pizza-card__input-wrapper">
                   <input
                     onChange={() => {
-                      setActiveSize(size);
+                      onChangeActiveSize(size);
                     }}
                     className="pizza-card__input visually-hidden"
                     id={`${typeId}-${activeDough}-${size}`}
@@ -195,23 +137,21 @@ const PizzaCard = ({pizza, onAddToCart, cart, onIncQuantity}) => {
 };
 
 PizzaCard.propTypes = {
-  cart: cartPropTypes,
   pizza: pizzaPropTypes,
-  onAddToCart: PropTypes.func.isRequired,
-  onIncQuantity: PropTypes.func.isRequired,
+  imageRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.instanceOf(Element)}),
+  ]),
+  isShownPopup: PropTypes.bool,
+  onFormSubmit: PropTypes.func.isRequired,
+  onChangeActiveDough: PropTypes.func.isRequired,
+  onChangeActiveSize: PropTypes.func.isRequired,
+  conditions: PropTypes.array.isRequired,
+  availableDoughIndex: PropTypes.number,
+  availableMinSizeIndex: PropTypes.number,
+  activeDough: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cart: getCartSelector(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onAddToCart: (pizza) => {
-    dispatch(CartActionCreator.addToCart(pizza));
-  },
-  onIncQuantity: (id) => {
-    dispatch(CartActionCreator.incQuantity(id));
-  },
-});
-
-export default compose(connect(mapStateToProps, mapDispatchToProps), memo)(PizzaCard);
+export default compose(withPopupCard, memo)(PizzaCard, areEqualByQuantity);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 
 import MainPage from '../pages/main-page/main-page';
 import CartPage from '../pages/cart-page/cart-page';
@@ -17,7 +17,7 @@ const App = () => {
           <CartPage />
         </Route>
         <Route>
-          <h1>404</h1>
+          <Redirect to="/" />
         </Route>
       </Switch>
     </BrowserRouter>

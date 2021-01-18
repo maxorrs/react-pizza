@@ -4,6 +4,7 @@
   width: 280px;
   position: relative;
   text-align: center;
+  z-index: 2;
 }
 
 .pizza-card.pizza-card--new::before {
@@ -22,12 +23,13 @@
   line-height: 18px;
 
   border-radius: 5px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .pizza-card__img-wrapper {
   position: relative;
   margin-bottom: 10px;
+  z-index: 1;
 }
 
 .pizza-card__img-wrapper:hover::after {
@@ -41,7 +43,6 @@
   background-color: white;
 
   opacity: 0.6;
-  z-index: 1;
 }
 
 .pizza-card__title {

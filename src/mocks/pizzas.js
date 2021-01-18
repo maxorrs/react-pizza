@@ -138,6 +138,100 @@ const pizzas = [
       },
     ],
   },
+
+  {
+    typeId: nanoid(),
+    type: 'Вегетарианские',
+    isHot: false,
+    isVegan: true,
+    isNew: true,
+    title: 'Овощи и грибы',
+    structure: `Итальянские травы, томатный соус, 
+      кубики брынзы, шампиньоны, сладкий перец, красный лук, моцарелла, маслины, томаты`,
+    image:
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/7a497170e99a435f8535f33c3ebaddc3_584x584.jpeg',
+    options: [
+      {
+        dough: 'Тонкое',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 350, isAvailable: true},
+          {id: nanoid(), size: 30, price: 550, isAvailable: true},
+          {id: nanoid(), size: 32, price: 650, isAvailable: true},
+          {id: nanoid(), size: 38, price: 850, isAvailable: true},
+        ],
+      },
+    ],
+  },
+
+  {
+    typeId: nanoid(),
+    type: 'Мясные',
+    isHot: false,
+    isVegan: false,
+    isNew: false,
+    title: 'Супермясная',
+    structure: `Цыпленок, митболы из говядины, 
+    пикантная пепперони, томатный соус, острая чоризо, моцарелла, бекон`,
+    image:
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/ff8e79f8-25f8-45fc-a488-30c716b7e04d.jpg',
+    options: [
+      {
+        dough: 'Традиционное',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 200, isAvailable: false},
+          {id: nanoid(), size: 30, price: 320, isAvailable: true},
+          {id: nanoid(), size: 40, price: 440, isAvailable: true},
+        ],
+      },
+      {
+        dough: 'Тонкое',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 26, price: 350, isAvailable: true},
+          {id: nanoid(), size: 30, price: 550, isAvailable: false},
+          {id: nanoid(), size: 32, price: 650, isAvailable: true},
+        ],
+      },
+    ],
+  },
+
+  {
+    typeId: nanoid(),
+    type: 'Вегетарианские',
+    isHot: false,
+    isVegan: true,
+    isNew: false,
+    title: 'Маргарита',
+    structure: `Увеличенная порция моцареллы, томаты, 
+    итальянские травы, томатный соус`,
+    image:
+      'https://dodopizza-a.akamaihd.net/static/Img/Products/e8a8ded1f8154d11ab5065dc5208b187_584x584.jpeg',
+    options: [
+      {
+        dough: 'Традиционное',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 30, price: 380, isAvailable: true},
+          {id: nanoid(), size: 40, price: 410, isAvailable: true},
+        ],
+      },
+      {
+        dough: 'Тонкое',
+        isAvailableDough: true,
+        id: nanoid(),
+        conditions: [
+          {id: nanoid(), size: 30, price: 650, isAvailable: true},
+          {id: nanoid(), size: 32, price: 750, isAvailable: true},
+        ],
+      },
+    ],
+  },
 ];
 
 export default pizzas;
