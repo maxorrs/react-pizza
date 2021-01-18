@@ -1,7 +1,6 @@
 .pizza-list {
   padding: 40px 60px 0px;
   margin: 0 auto;
-  // width: 1390px;
   width: 80%;
   background-color: white;
 }
@@ -9,6 +8,8 @@
 .pizza-list__title {
   margin: 0;
   margin-bottom: 40px;
+  width: 75%;
+  line-height: 1;
 }
 
 .pizza-list__list {

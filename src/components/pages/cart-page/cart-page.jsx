@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
 
 import Header from '../../header/header';
 import Cart from '../../cart/cart';
@@ -31,4 +32,8 @@ const mapStateToProps = (state) => ({
   cart: getCartSelector(state),
 });
 
-export default connect(mapStateToProps)(CartPage);
+const areEqualByLength = (prevProps, nextProps) => {
+  return prevProps.cart.length !== nextProps.cart.length;
+};
+
+export default compose(connect(mapStateToProps), memo)(CartPage, areEqualByLength);

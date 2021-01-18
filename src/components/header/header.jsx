@@ -49,4 +49,8 @@ const mapStateToProps = (state) => ({
   sumPriceInCart: getSumPriceInCartSelector(state),
 });
 
-export default compose(connect(mapStateToProps), memo)(Header);
+const areEqualByValue = (prevProps, nextProps) => {
+  return !(prevProps.isMainPage === nextProps.isMainPage);
+};
+
+export default compose(connect(mapStateToProps), memo)(Header, areEqualByValue);
