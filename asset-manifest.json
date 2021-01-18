@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-pizza/static/css/main.99f698a9.chunk.css",
-    "main.js": "/react-pizza/static/js/main.3f7292a1.chunk.js",
-    "main.js.map": "/react-pizza/static/js/main.3f7292a1.chunk.js.map",
-    "runtime-main.js": "/react-pizza/static/js/runtime-main.016f4916.js",
-    "runtime-main.js.map": "/react-pizza/static/js/runtime-main.016f4916.js.map",
-    "static/js/2.6df12901.chunk.js": "/react-pizza/static/js/2.6df12901.chunk.js",
-    "static/js/2.6df12901.chunk.js.map": "/react-pizza/static/js/2.6df12901.chunk.js.map",
+    "main.js": "/react-pizza/static/js/main.c016745b.chunk.js",
+    "main.js.map": "/react-pizza/static/js/main.c016745b.chunk.js.map",
+    "runtime-main.js": "/react-pizza/static/js/runtime-main.ea1bb1fe.js",
+    "runtime-main.js.map": "/react-pizza/static/js/runtime-main.ea1bb1fe.js.map",
+    "static/js/2.89efc7db.chunk.js": "/react-pizza/static/js/2.89efc7db.chunk.js",
+    "static/js/2.89efc7db.chunk.js.map": "/react-pizza/static/js/2.89efc7db.chunk.js.map",
     "index.html": "/react-pizza/index.html",
     "static/css/main.99f698a9.chunk.css.map": "/react-pizza/static/css/main.99f698a9.chunk.css.map",
-    "static/js/2.6df12901.chunk.js.LICENSE.txt": "/react-pizza/static/js/2.6df12901.chunk.js.LICENSE.txt",
+    "static/js/2.89efc7db.chunk.js.LICENSE.txt": "/react-pizza/static/js/2.89efc7db.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/react-pizza/static/media/ProximaNova-Semibold.a71877a1.woff",
     "static/media/cart.scss": "/react-pizza/static/media/trash.ceafcffb.svg",
     "static/media/cart-empty.scss": "/react-pizza/static/media/empty-cart.db905d1f.png",
@@ -17,9 +17,9 @@
     "static/media/pizza-logo.56ac8703.svg": "/react-pizza/static/media/pizza-logo.56ac8703.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.016f4916.js",
-    "static/js/2.6df12901.chunk.js",
+    "static/js/runtime-main.ea1bb1fe.js",
+    "static/js/2.89efc7db.chunk.js",
     "static/css/main.99f698a9.chunk.css",
-    "static/js/main.3f7292a1.chunk.js"
+    "static/js/main.c016745b.chunk.js"
   ]
 }
