@@ -8,9 +8,10 @@
 }
 
 .pizza-cart__info {
-  width: 375px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .pizza-cart__img-wrapper {
@@ -25,12 +26,14 @@
   margin: 0;
   font-size: 22px;
   line-height: 26px;
+  width: 178px;
 }
 
 .pizza-cart__subtitle {
   margin: 0;
   font-size: 18px;
   line-height: 22px;
+  width: 178px;
 }
 
 .pizza-cart__actions {
@@ -89,6 +92,8 @@
   font-size: 22px;
   line-height: 27px;
   font-weight: 700;
+  min-width: 100px;
+  text-align: center;
 }
 
 .pizza-cart__action-btn.pizza-cart__action-btn--delete {
