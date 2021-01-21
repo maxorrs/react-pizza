@@ -4,7 +4,6 @@
   width: 280px;
   position: relative;
   text-align: center;
-  z-index: 2;
 }
 
 .pizza-card.pizza-card--new::before {
@@ -119,6 +118,7 @@
   display: block;
   padding: 10px;
   cursor: pointer;
+  user-select: none;
 
   &:last-of-type {
     margin-right: 0;

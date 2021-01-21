@@ -18,7 +18,9 @@ export const areEqualByIdAndQuantity = (prevProps, nextProps) => {
 
 export const areEqualByQuantity = (prevProps, nextProps) => {
   return (
-    prevProps.quantity === nextProps.quantity && prevProps.isShownPopup === nextProps.isShownPopup
+    prevProps.quantity === nextProps.quantity &&
+    prevProps.isShownPopup === nextProps.isShownPopup &&
+    prevProps.price === nextProps.price
   );
 };
 

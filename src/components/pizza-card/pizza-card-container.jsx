@@ -21,11 +21,12 @@ const PizzaCardContainer = (props) => {
   const {onAddToCart, onIncQuantity, pizza, cart} = props;
 
   const {typeId, title, type, image, options} = pizza;
-  const doughTypes = getDoughTypes(pizza);
-  const [activeDough, setActiveDough] = useState(doughTypes[0]);
+  const [firstDoughType] = getDoughTypes(pizza);
+  const [activeDough, setActiveDough] = useState(firstDoughType);
 
   const {conditions} = options.find((option) => option.dough === activeDough);
   const defaultSize = getDefaultPizzaSize(conditions);
+
   const [activeSize, setActiveSize] = useState(defaultSize);
   const {price, id} = conditions.find((condition) => condition.size === activeSize) || {
     price: 0,

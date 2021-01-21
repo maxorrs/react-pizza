@@ -6,7 +6,6 @@ import PizzaCart from '../pizza-cart/pizza-cart';
 
 import {getCartSelector} from '../../store/reducers/cart/selectors';
 import {cartPropTypes} from '../../utils/prop-types';
-import {areEqualByLength} from '../../utils/memo';
 
 import './cart-list.scss';
 

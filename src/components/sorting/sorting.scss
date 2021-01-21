@@ -36,8 +36,9 @@
   margin: 0;
   list-style: none;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  background-color: white;
   border-radius: 10px;
-  z-index: 5;
+  z-index: 3;
 }
 
 .sorting__option.sorting__option--active .sorting__link,

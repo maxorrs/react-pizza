@@ -27,7 +27,7 @@ const Header = ({sumQuantityInCart, sumPriceInCart, isMainPage}) => {
       </Link>
       {isMainPage && (
         <Link to="/cart" className="header__order">
-          <p className="header__price">{sumPriceInCart} ₽</p>
+          <p className="header__price">{sumPriceInCart}Р</p>
           <p className="header__quantity">{sumQuantityInCart}</p>
         </Link>
       )}
