@@ -5,7 +5,7 @@
 ## Стек
 
 - React.js
-- Redux / React-Redux
+- Redux / React-Redux / Redux-Thunk / Redux-Localstorage
 - Reselect
 - Immer
 - SCSS
