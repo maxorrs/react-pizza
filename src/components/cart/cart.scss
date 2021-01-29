@@ -69,11 +69,11 @@
     background-repeat: no-repeat;
     background-size: 15px 15px;
 
-    opacity: .8;
+    opacity: 0.8;
   }
 
   &:hover {
-    color: darken($gray-text-lighten, 15%)
+    color: darken($gray-text-lighten, 15%);
   }
 
   &:hover::before {
@@ -155,5 +155,4 @@
   line-height: 20px;
   cursor: pointer;
   user-select: none;
-
 }
