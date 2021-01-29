@@ -1,7 +1,10 @@
 import produce from 'immer';
+import {load} from 'redux-localstorage-simple';
+
+const {CART: {cart: initalCartState = []} = {}} = load({states: ['CART'], namespace: 'cart'});
 
 const initialState = {
-  cart: [],
+  cart: initalCartState,
 };
 
 export const CartActionType = {
@@ -82,6 +85,7 @@ export const cartReducer = (state = initialState, action) => {
         });
         break;
       }
+
       default:
         break;
     }

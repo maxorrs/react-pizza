@@ -6,7 +6,7 @@ import {compose} from 'redux';
 import {pizzaPropTypes} from '../../utils/prop-types';
 
 import './pizza-card.scss';
-import withPopupCard from '../hocs/with-popup-card';
+import withPopupCard from '../../hocs/with-popup-card';
 import {areEqualByQuantity} from '../../utils/memo';
 
 const PizzaCard = ({

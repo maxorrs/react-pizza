@@ -12,3 +12,5 @@ export const getFilteredPizzasSelector = createSelector(
   [getPizzasSelector, getActivePizzaTypeSelector, getActiveSortTypeSelector],
   filterPizzas,
 );
+
+export const getStatusPizzasSelector = (state) => state[NameSpace.DATA].isLoadingPizzas;

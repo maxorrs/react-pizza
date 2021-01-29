@@ -60,6 +60,7 @@ module.exports = {
       'after',
       {
         overrides: {
+          '?': 'before',
           ':': 'before',
         },
       },
